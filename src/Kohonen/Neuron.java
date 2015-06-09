@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Neuron {
     // Array with the weights.
-    private ArrayList<Integer> weights;
+    private ArrayList<Double> weights;
     private int x;
     private int y;
 
@@ -22,7 +22,7 @@ public class Neuron {
      *
      * @param w ArrayList containing the weights.
      */
-    public Neuron(ArrayList<Integer> w) {
+    public Neuron(ArrayList<Double> w) {
         this.weights = w;
     }
 
@@ -33,13 +33,13 @@ public class Neuron {
      * @param x x position.
      * @param y y position.
      */
-    public Neuron(ArrayList<Integer> w, int x, int y) {
+    public Neuron(ArrayList<Double> w, int x, int y) {
         this.weights = w;
         this.x = x;
         this.y = y;
     }
 
-    public ArrayList<Integer> getWeights() {
+    public ArrayList<Double> getWeights() {
         return weights;
     }
 
@@ -49,7 +49,7 @@ public class Neuron {
      * @param i Position of the weight to get.
      * @return  The weight.
      */
-    public Integer getWeightI(int i) {
+    public Double getWeightI(int i) {
         return this.weights.get(i);
     }
 
@@ -61,11 +61,11 @@ public class Neuron {
         return y;
     }
 
-    public void setWeights(ArrayList<Integer> weights) {
+    public void setWeights(ArrayList<Double> weights) {
         this.weights = weights;
     }
 
-    public void setWeightI(int i, int value) {
+    public void setWeightI(int i, double value) {
         this.weights.set(i, value);
     }
 

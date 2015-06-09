@@ -14,12 +14,12 @@ import javax.swing.*;
 public class ColorApplication {
 
     public static void main(String[] args) {
-        ColorScreen screen = new ColorScreen(400, 400, 5);
+        ColorScreen screen = new ColorScreen(200, 200, 5);
         JFrame f = new JFrame();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.add(screen, "Center");
         f.setTitle("Color classification");
-        f.setSize(400,400);
+        f.setSize(200,200);
         f.setVisible(true);
     }
 }
