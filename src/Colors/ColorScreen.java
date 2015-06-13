@@ -52,7 +52,7 @@ public class ColorScreen extends JPanel {
         eightColors.add(new ArrayList<Double>(Arrays.asList(1.0, 0.0, 1.0)));    // Pink
         eightColors.add(new ArrayList<Double>(Arrays.asList(1.0, 1.0, 1.0)));  // White
         */
-        this.network = new Kohonen("colors.dat", w, h);
+        this.network = new Kohonen("colors.dat", w / size, h / size);
         this.init();
         this.setPreferredSize(new Dimension(this.width, this.height));
         this.setVisible(true);
@@ -63,8 +63,8 @@ public class ColorScreen extends JPanel {
      * Initialize the neurons network with random values.
      */
     public void init() {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
+        for (int i = 0; i < this.height / this.squareSize; i++) {
+            for (int j = 0; j < this.width / this.squareSize; j++) {
                 // Set random colors
                 double red = Math.random();
                 double green = Math.random();
@@ -97,8 +97,8 @@ public class ColorScreen extends JPanel {
         //    }
         //}
 
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
+        for (int i = 0; i < this.height / this.squareSize; i++) {
+            for (int j = 0; j < this.width / this.squareSize; j++) {
                 Neuron n = this.network.getNeuron(i, j);
                 ArrayList<Double> colors = n.getWeights();
                 //g.setColor(new Color(n.getWeightI(0), n.getWeightI(1), n.getWeightI(2)));

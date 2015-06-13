@@ -2,9 +2,7 @@ package Kohonen;
 
 import Utilities.ParserDat;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Class to implement a Kohonen network - Self-Organizing Maps (SOM).
@@ -33,7 +31,6 @@ public class Kohonen {
     // Input of the Kohonen network. Weights will be compared with them.
     ArrayList<ArrayList<Double>> input;
 
-    public String inputStr;
 
     /**
      * Constructor
@@ -48,7 +45,7 @@ public class Kohonen {
         this.network = new Neuron[w][h];
         this.input = ParserDat.DatStrToArrayList(filename);
         //this.nbIterations = input.size() * 3;
-        this.nbIterations = 1000;
+        this.nbIterations = 2000;
     }
 
     /**
@@ -87,7 +84,7 @@ public class Kohonen {
         for (int i = 0; i < vectorA.size(); i++) {
             distance += Math.pow(vectorA.get(i) - vectorB.get(i), 2);
         }
-        return distance;
+        return Math.sqrt(distance);
     }
 
 
@@ -131,11 +128,11 @@ public class Kohonen {
      * @param t     Value of the current iteration.
      */
     public void updateNeighbors(Neuron BMU, ArrayList<Double> input, int t) {
-        double rayon = this.width / 2;
-        double landa = this.nbIterations / rayon;
+        double radiusMap = this.width / 2;
+        double lambda = this.nbIterations / radiusMap;
 
         // Calculation of the radius of influence.
-        double radius = rayon * Math.exp(-t / landa);
+        double radius = radiusMap * Math.exp(-t / lambda);
 
         int iMin = (BMU.getY() - radius) < 0 ? 0 : (int) (BMU.getY() - radius);
         int iMax = (BMU.getY() + radius) > this.width ? this.width : (int) (BMU.getY() + radius);
@@ -147,15 +144,17 @@ public class Kohonen {
             for (int j = jMin; j < jMax; j++) {
                 // Run over weights
                 Neuron n = this.network[i][j];
-                double Lt = this.learningRate * Math.exp(-t / landa);
+                double Lt = this.learningRate * Math.exp(-t / lambda);
 
                 double sumDist = this.euclideDistance(BMU.getWeights(), n.getWeights());
 
-                double teta = Math.exp(-1 * (sumDist / (2 * Math.pow(radius, 2))));
+                double delta = sumDist / (2 * radius * radius);
+                //double theta = Math.exp(-1 * (sumDist / (2 * Math.pow(radius, 2))));
+                double theta = Math.exp(-delta);
 
                 for (int k = 0; k < BMU.getSizeWeights(); k++) {
 
-                    double value = n.getWeightI(k) + teta * Lt * (input.get(k) - n.getWeightI(k));
+                    double value = n.getWeightI(k) + theta * Lt * (input.get(k) - n.getWeightI(k));
 
                     n.setWeightI(k, value);
                     if (value > 1.0)
@@ -183,14 +182,14 @@ public class Kohonen {
         ArrayList<Double> vector;
 
         for (int t = 0; t < this.nbIterations; t++) {
-            /*
+
             // Choose another entry vector than the previous one.
             do {
                 int randomInput = (int) (Math.random() * this.input.size());
                 vector = this.input.get(randomInput);
             } while (oldVector.equals(vector));
-            */
-            vector = this.input.get(t % 100);
+
+            //vector = this.input.get(t % 100);
             //System.out.println(vector.toString());
 
             // The old vector is replaced by the new one.
@@ -202,6 +201,7 @@ public class Kohonen {
             // Update the BMU's neighbors
             this.updateNeighbors(BMU, vector, t);
         }
+        System.out.println("done");
 
     }
 }
