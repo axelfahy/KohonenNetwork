@@ -96,7 +96,7 @@ public class CountryScreen extends JPanel {
     }
 
     /**
-     * Draw the rectangles on the window.
+     * Draw the name of the countries on the window.
      *
      * @param g Graphics element.
      */
@@ -112,18 +112,6 @@ public class CountryScreen extends JPanel {
                 g.drawString(entry.getValue().get(i), x, y - (i * 10));
             }
         }
-
-        //for (int i = 0; i < this.height / this.squareSize; i++) {
-        //    for (int j = 0; j < this.width / this.squareSize; j++) {
-        //        Neuron n = this.network.getNeuron(i, j);
-        //        ArrayList<Double> colors = n.getWeights();
-        //        //g.setColor(new Color(n.getWeightI(0), n.getWeightI(1), n.getWeightI(2)));
-        //        g.setColor(new Color((int) (colors.get(0) * 255), (int) (colors.get(1) * 255), (int) (colors.get(2) * 255)));
-        //        // Fill a rectangle with the color
-        //        g.fillRect(j * this.squareSize, i * this.squareSize, this.squareSize, this.squareSize);
-        //    }
-        //}
-
     }
 
 }
