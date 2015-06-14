@@ -45,6 +45,12 @@ public class ParserDat {
         return text;
     }
 
+    /**
+     * Parse a .dat file into a list that contains the vectors and their values
+     *
+     * @param filename  The filename to load.
+     * @return          The list of vectors.
+     */
     public static ArrayList<ArrayList<Double>> datStrToArrayList (String filename) {
         String inputStr = read(filename);
         ArrayList<ArrayList<Double>> input = new ArrayList<>();
@@ -55,26 +61,33 @@ public class ParserDat {
         String vector;
         int index = 0;
 
+        // Going through vectors
         for (int j = 0; j < separateInput.length; j++) {
-        //for (String line : separateInput) {
             line = separateInput[j];
+
+            // Except the header
             if (j > 3) {
                 input.add(new ArrayList<Double>());
                 vectors = line.split("\t");
+
+                // Going through the values of a vector
                 for (int i = 1; i < vectors.length; i++) {
                     vector = vectors[i];
                     input.get(index).add(Double.parseDouble(vector));
                 }
                 index++;
             }
-            else {
-                // Manage the header
-            }
         }
 
         return input;
     }
 
+    /**
+     * Parse a .dat file into a Hash table that associates the key of a vector to its values.
+     *
+     * @param filename  The filename to load.
+     * @return          The list of vectors associated with their name (key).
+     */
     public static HashMap<String, ArrayList<Double>> datStrToHashMap (String filename) {
         String inputStr = read(filename);
         HashMap<String, ArrayList<Double>> input = new HashMap<>();
@@ -85,11 +98,16 @@ public class ParserDat {
         String vector;
         ArrayList<Double> newVector;
 
+        // Going through the vectors
         for (int j = 0; j < separateInput.length; j++) {
             line = separateInput[j];
+
+            // Except the header
             if (j > 3) {
                 newVector = new ArrayList<>();
                 vectors = line.split("\t");
+
+                // Going through the values of a vector
                 for (int i = 1; i < vectors.length; i++) {
                     vector = vectors[i];
                     newVector.add(Double.parseDouble(vector));
