@@ -73,6 +73,24 @@ public class Kohonen {
     }
 
     /**
+     * Get the width of the network.
+     *
+     * @return The width.
+     */
+    public int getWidth() {
+        return width;
+    }
+
+    /**
+     * Get the height of the network.
+     *
+     * @return The height.
+     */
+    public int getHeight() {
+        return height;
+    }
+
+    /**
      * Get the input array.
      *
      * @return The input.
