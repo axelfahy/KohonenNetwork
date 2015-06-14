@@ -7,8 +7,7 @@ import java.util.ArrayList;
  *
  * A neuron has weights (vector) and a position (x, y).
  *
- * @author Axel Fahy
- *
+ * @author Axel Fahy, Rudolf Höhn
  * @version 30.05.2015
  */
 public class Neuron {

@@ -7,11 +7,10 @@ import java.util.ArrayList;
 
 /**
  * Class to implement a Kohonen network - Self-Organizing Maps (SOM).
- * <p/>
- * Vectors of weights should already have the same importance. (Pretreatment)
- * <p/>
  *
- * @author Axel Fahy
+ * Vectors of weights should already have the same importance. (Pretreatment)
+ *
+ * @author Axel Fahy, Rudolf Höhn
  * @version 30.05.2015
  */
 public class Kohonen {

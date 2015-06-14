@@ -3,7 +3,14 @@ package Countries;
 import javax.swing.*;
 
 /**
- * Created by rudy on 14.06.15.
+ * Main file for the Country application.
+ * This application creates a window with the name of each country from the input file (ISO3).
+ * Then, Countries are regrouping with the Kohonen network.
+ *
+ * Each country is spread with his PIB and its evolution over the past 6 years (2008-2013).
+ *
+ * @author Axel Fahy, Rudolf Höhn
+ * @version 14.06.2015
  */
 public class CountryApplication {
 

@@ -4,11 +4,10 @@ import javax.swing.*;
 
 /**
  * Main file for the Color application.
- * This application create an window with squares of random colors.
+ * This application creates a window with squares of random colors.
  * Then, colors are changed by a Kohonen network.
  *
- * @author Axel Fahy
- *
+ * @author Axel Fahy, Rudolf Höhn
  * @version 27.05.2015
  */
 public class ColorApplication {

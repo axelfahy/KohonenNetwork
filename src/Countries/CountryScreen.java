@@ -10,10 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by rudy on 14.06.15.
+ * Class to create the windows with the countries.
+ *
+ * @author Axel Fahy, Rudolf Höhn
+ * @version 14.06.2015
  */
 public class CountryScreen extends JPanel {
-
 
     private int width;
     private int height;

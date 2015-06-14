@@ -10,8 +10,7 @@ import java.util.Arrays;
 /**
  * Class to create the windows with the colors.
  *
- * @author Axel Fahy
- *
+ * @author Axel Fahy, Rudolf Höhn
  * @version 27.05.2015
  */
 public class ColorScreen extends JPanel {

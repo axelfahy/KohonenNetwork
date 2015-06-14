@@ -8,7 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by rudy on 09.06.15.
+ *  Parser for the input file.
+ *  Files contain input vectors which will be added to the network.
+ *
+ * @author Axel Fahy, Rudolf Höhn
+ * @version 14.06.2015
  */
 public class ParserDat {
 
