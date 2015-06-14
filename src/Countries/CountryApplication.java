@@ -9,8 +9,8 @@ public class CountryApplication {
 
     public static void main(String[] args) {
 
-        final int h = 1000;
-        final int w = 1000;
+        final int h = 800;
+        final int w = 800;
 
         CountryScreen screen = new CountryScreen(w, h, 20);
         JFrame f = new JFrame();

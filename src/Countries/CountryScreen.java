@@ -47,7 +47,7 @@ public class CountryScreen extends JPanel {
      *
      * @return The Kohonen network.
      */
-    public Kohonen getnetwork() {
+    public Kohonen getNetwork() {
         return this.network;
     }
 
