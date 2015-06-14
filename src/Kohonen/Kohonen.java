@@ -45,7 +45,7 @@ public class Kohonen {
         this.width = w;
         this.height = h;
         this.network = new Neuron[w][h];
-        this.input = ParserDat.DatStrToArrayList(filename);
+        this.input = ParserDat.datStrToArrayList(filename);
         this.nbIterations = 2000;
         this.screen = screen;
     }
@@ -206,7 +206,7 @@ public class Kohonen {
             this.screen.repaint();
             // Sleep for the animation.
             try {
-                Thread.sleep(50);
+                Thread.sleep(10);
             }
             catch (InterruptedException e) {
                 System.out.println("Erreur sleep : " + e);
