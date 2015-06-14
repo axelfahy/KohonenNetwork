@@ -114,7 +114,6 @@ public class Kohonen {
         return Math.sqrt(distance);
     }
 
-
     /**
      * Return the BMU of the network with a input vector.
      *
@@ -140,7 +139,7 @@ public class Kohonen {
 
     /**
      * Update the values of the BMU's neighbors.
-     * <p/>
+     *
      * First, calculate the radius of influence.
      * Then, in this radius, values neuron will be modified.
      *
@@ -187,11 +186,11 @@ public class Kohonen {
 
     /**
      * SOM (Self-Organizing Map) algorithm.
-     * <p/>
+     *
      * Weights of network has to already be randomize.
-     * <p/>
+     *
      * Until 'nbIterations' is reached :
-     * <p/>
+     *
      * - Pick an input vector randomly.
      * - Calculate the BMU of this input.
      * - Update the BMU's neighbors.

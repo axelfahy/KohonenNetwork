@@ -52,26 +52,57 @@ public class Neuron {
         return this.weights.get(i);
     }
 
+    /**
+     * Get x position of neuron.
+     *
+     * @return The x position.
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Get y position of neuron.
+     *
+     * @return The y position.
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * Set all the weights of the neuron with the given array.
+     *
+     * @param weights   The new weights in a ArrayList.
+     */
     public void setWeights(ArrayList<Double> weights) {
         this.weights = weights;
     }
 
+    /**
+     * Set a weight at position i of neuron's weights.
+     *
+     * @param i     The position in the weights array.
+     * @param value The new value.
+     */
     public void setWeightI(int i, double value) {
         this.weights.set(i, value);
     }
 
+    /**
+     * Set x position of neuron.
+     *
+     * @param x The new x position.
+     */
     public void setX(int x) {
         this.x = x;
     }
 
+    /**
+     * Set y position of neuron.
+     *
+     * @param y The new y position.
+     */
     public void setY(int y) {
         this.y = y;
     }
