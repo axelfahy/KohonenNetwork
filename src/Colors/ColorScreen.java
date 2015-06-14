@@ -10,8 +10,6 @@ import java.util.Arrays;
 /**
  * Class to create the windows with the colors.
  *
- * TODO : Print two windows ? Before and after ? or is it possible to show the evolution ?
- *
  * @author Axel Fahy
  *
  * @version 27.05.2015

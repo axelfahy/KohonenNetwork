@@ -100,17 +100,14 @@ public class Kohonen {
 
     /**
      * Return the BMU of the network with a input vector.
-     * <p/>
+     *
      * The BMU (Best Matching Unit) is the neuron that has the smallest distance from the input vector.
-     * There could be more than one BMU, so each BMU is put into a list and then
-     * one is pick randomly.
      *
      * @param input The input vector.
      * @return The BMU (as a neuron).
      */
     public Neuron getBMU(ArrayList<Double> input) {
-        ArrayList<Neuron> list = new ArrayList<>();
-        Neuron BMU;
+        Neuron BMU = null;
         double distanceMin = Double.MAX_VALUE;
         for (int i = 0; i < this.height; i++) {
             for (int j = 0; j < this.width; j++) {
@@ -118,13 +115,10 @@ public class Kohonen {
                 if (distanceTmp < distanceMin) {
                     distanceMin = distanceTmp;
                     BMU = this.network[i][j];
-                    list.add(BMU);
-
                 }
             }
         }
-        // Pick one BMU randomly if there is more than one.
-        return list.get((int) (Math.random() * list.size()));
+        return BMU;
     }
 
     /**
