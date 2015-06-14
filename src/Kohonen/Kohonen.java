@@ -1,6 +1,5 @@
 package Kohonen;
 
-import Colors.ColorScreen;
 import Utilities.ParserDat;
 
 import javax.swing.*;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
  * <p/>
  * Vectors of weights should already have the same importance. (Pretreatment)
  * <p/>
- * TODO : Check formulas.
  *
  * @author Axel Fahy
  * @version 30.05.2015
@@ -74,6 +72,14 @@ public class Kohonen {
         return this.network[i][j];
     }
 
+    /**
+     * Get the input array.
+     *
+     * @return The input.
+     */
+    public ArrayList<ArrayList<Double>> getInput() {
+        return input;
+    }
 
     /**
      * Calculate the Euclidean distance.
@@ -103,8 +109,8 @@ public class Kohonen {
      * @return The BMU (as a neuron).
      */
     public Neuron getBMU(ArrayList<Double> input) {
-        ArrayList<Neuron> list = new ArrayList<Neuron>();
-        Neuron BMU = null;
+        ArrayList<Neuron> list = new ArrayList<>();
+        Neuron BMU;
         double distanceMin = Double.MAX_VALUE;
         for (int i = 0; i < this.height; i++) {
             for (int j = 0; j < this.width; j++) {
@@ -182,7 +188,7 @@ public class Kohonen {
     public void SOM() {
         // Pick an input vector randomly.
         // A input vector can't be picked twice in a row.
-        ArrayList<Double> oldVector = new ArrayList<Double>();
+        ArrayList<Double> oldVector = new ArrayList<>();
         ArrayList<Double> vector;
 
         for (int t = 0; t < this.nbIterations; t++) {

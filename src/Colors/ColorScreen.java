@@ -1,13 +1,11 @@
 package Colors;
 
 import Kohonen.*;
-import Utilities.ParserDat;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Class to create the windows with the colors.
@@ -24,7 +22,6 @@ public class ColorScreen extends JPanel {
     private int height;
     private int squareSize;
     private Kohonen network;
-    private ArrayList<ArrayList<Double>> eightColors;
 
     /**
      * Constructor of the class.
@@ -67,7 +64,7 @@ public class ColorScreen extends JPanel {
                 double green = Math.random();
                 double blue = Math.random();
                 // Create the neuron and add it to the network.
-                this.network.addNeuron(new ArrayList<Double>(Arrays.asList(red, green, blue)), j, i);
+                this.network.addNeuron(new ArrayList<>(Arrays.asList(red, green, blue)), j, i);
             }
         }
     }
