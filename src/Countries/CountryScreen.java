@@ -5,9 +5,7 @@ import Utilities.ParserDat;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Arc2D;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,8 +55,8 @@ public class CountryScreen extends JPanel {
      * Initialize the neurons network with random values.
      */
     public void init() {
-        for (int i = 0; i < this.height / this.squareSize; i++) {
-            for (int j = 0; j < this.width / this.squareSize; j++) {
+        for (int i = 0; i < (this.height / this.squareSize) * 3; i++) {
+            for (int j = 0; j < (this.width / this.squareSize) * 3; j++) {
 
                 ArrayList<Double> newNeuron = new ArrayList<>();
 
@@ -106,10 +104,10 @@ public class CountryScreen extends JPanel {
         HashMap<Neuron, ArrayList<String>> neuronSet = getNeuronSet();
         // Run over neuron to print their country on the map.
         for (Map.Entry<Neuron, ArrayList<String>> entry : neuronSet.entrySet()) {
-            for (String country : entry.getValue()) {
-                int x = (entry.getKey().getX() / this.network.getWidth()) * this.width;
-                int y = (entry.getKey().getY() / this.network.getHeight()) * this.height;
-                g.drawString(country, x, y);
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                int x = (entry.getKey().getX() * this.width) / this.network.getWidth();
+                int y = (entry.getKey().getY() * this.height) / this.network.getHeight();
+                g.drawString(entry.getValue().get(i), x, y - (i * 10));
             }
         }
 

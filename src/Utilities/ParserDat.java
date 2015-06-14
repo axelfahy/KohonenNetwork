@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -44,7 +43,7 @@ public class ParserDat {
 
     public static ArrayList<ArrayList<Double>> datStrToArrayList (String filename) {
         String inputStr = read(filename);
-        ArrayList<ArrayList<Double>> input = new ArrayList<ArrayList<Double>>();
+        ArrayList<ArrayList<Double>> input = new ArrayList<>();
 
         String[] separateInput = inputStr.split("\n");
         String[] vectors;
