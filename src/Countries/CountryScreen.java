@@ -21,6 +21,7 @@ public class CountryScreen extends JPanel {
     private int height;
     private int squareSize;
     private Kohonen network;
+    private String filename = "coutries.dat";
 
     /**
      * Constructor of the class.
@@ -38,7 +39,7 @@ public class CountryScreen extends JPanel {
         this.squareSize = size;
         this.neuronMap = new HashMap<>();
 
-        this.network = new Kohonen("countries.dat", w / size, h / size, this);
+        this.network = new Kohonen(this.filename, w / size, h / size, this);
         this.init();
         this.setPreferredSize(new Dimension(this.width, this.height));
         this.setVisible(true);
@@ -63,7 +64,7 @@ public class CountryScreen extends JPanel {
                 ArrayList<Double> newNeuron = new ArrayList<>();
 
                 // Create the neuron and add it to the network
-                for (int k = 0; k < this.network.getInput().size(); k++) {
+                for (int k = 0; k < this.network.getInput().get(k).size(); k++) {
                     newNeuron.add(Math.random());
                 }
                 this.network.addNeuron(newNeuron, j, i);
