@@ -1,7 +1,5 @@
 package Countries;
 
-import Colors.ColorScreen;
-
 import javax.swing.*;
 
 /**
@@ -19,9 +17,13 @@ public class CountryApplication {
         f.setResizable(false);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.add(screen, "Center");
-        f.setTitle("Color classification");
+        f.setTitle("Country classification");
         f.setSize(w, h);
         f.setVisible(true);
+
+        // Execution of SOM algorithm.
+        screen.getNetwork().SOM();
     }
+
 
 }

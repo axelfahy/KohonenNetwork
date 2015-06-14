@@ -33,11 +33,19 @@ public class CountryScreen extends JPanel {
         this.width = w;
         this.squareSize = size;
 
-        this.network = new Kohonen("countries.dat", w / size, h / size);
+        this.network = new Kohonen("countries.dat", w / size, h / size, this);
         this.init();
         this.setPreferredSize(new Dimension(this.width, this.height));
         this.setVisible(true);
-        this.network.SOM();
+    }
+
+    /**
+     * Getter for the Kohonen network.
+     *
+     * @return The Kohonen network.
+     */
+    public Kohonen getNetwork() {
+        return this.network;
     }
 
     /**
@@ -47,8 +55,13 @@ public class CountryScreen extends JPanel {
         for (int i = 0; i < this.height / this.squareSize; i++) {
             for (int j = 0; j < this.width / this.squareSize; j++) {
 
-                // Create the neuron and add it to the network.
-                this.network.addNeuron(new ArrayList<Double>(Arrays.asList(Math.random(), Math.random(), Math.random(), Math.random(), Math.random(), Math.random())), j, i);
+                ArrayList<Double> newNeuron = new ArrayList<>();
+
+                // Create the neuron and add it to the network
+                for (int k = 0; k < this.network.getInput().size(); k++) {
+                    newNeuron.add(Math.random());
+                }
+                this.network.addNeuron(newNeuron, j, i);
             }
         }
     }
