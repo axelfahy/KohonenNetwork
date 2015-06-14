@@ -16,6 +16,7 @@ public class Neuron {
     private ArrayList<Double> weights;
     private int x;
     private int y;
+    private String label;
 
     /**
      * Construtor with a list of weights.
