@@ -40,23 +40,20 @@ public class ColorScreen extends JPanel {
         this.height = h;
         this.width = w;
         this.squareSize = size;
-        /*
-        // Set the colors (entries of the SOM)
-        eightColors = new ArrayList<ArrayList<Double>>();
-        eightColors.add(new ArrayList<Double>(Arrays.asList(0.0, 0.0, 0.0)));        // Black
-        eightColors.add(new ArrayList<Double>(Arrays.asList(1.0, 0.0, 0.0)));      // Red
-        eightColors.add(new ArrayList<Double>(Arrays.asList(0.0, 1.0, 0.0)));      // Green
-        eightColors.add(new ArrayList<Double>(Arrays.asList(0.0, 0.0, 1.0)));      // Blue
-        eightColors.add(new ArrayList<Double>(Arrays.asList(1.0, 1.0, 0.0)));    // Yellow
-        eightColors.add(new ArrayList<Double>(Arrays.asList(0.0, 1.0, 1.0)));    // Light Blue
-        eightColors.add(new ArrayList<Double>(Arrays.asList(1.0, 0.0, 1.0)));    // Pink
-        eightColors.add(new ArrayList<Double>(Arrays.asList(1.0, 1.0, 1.0)));  // White
-        */
-        this.network = new Kohonen("colors.dat", w / size, h / size);
+
+        this.network = new Kohonen("colors.dat", w / size, h / size, this);
         this.init();
         this.setPreferredSize(new Dimension(this.width, this.height));
         this.setVisible(true);
-        this.network.SOM();
+    }
+
+    /**
+     * Getter for the Kohonen network.
+     *
+     * @return The Kohonen network.
+     */
+    public Kohonen getNetwork() {
+        return this.network;
     }
 
     /**
@@ -83,20 +80,6 @@ public class ColorScreen extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        //for (int i = 0; i < height; i++) {
-        //    for (int j = 0; j < width; j++) {
-        //        // Set random colors
-        //        int red = (int)(Math.random() * 255);
-        //        int green = (int)(Math.random() * 255);
-        //        int blue = (int)(Math.random() * 255);
-        //        // Create the neuron and add it to the network.
-        //        this.network.addNeuron(new ArrayList<Integer>(Arrays.asList(red, green, blue)), i, j);
-        //        g.setColor(new Color(red, green, blue));
-        //        // Fill a rectangle with the color
-        //        g.fillRect(j * this.squareSize, i * this.squareSize, this.squareSize, this.squareSize);
-        //    }
-        //}
-
         for (int i = 0; i < this.height / this.squareSize; i++) {
             for (int j = 0; j < this.width / this.squareSize; j++) {
                 Neuron n = this.network.getNeuron(i, j);
@@ -107,6 +90,5 @@ public class ColorScreen extends JPanel {
                 g.fillRect(j * this.squareSize, i * this.squareSize, this.squareSize, this.squareSize);
             }
         }
-
     }
 }

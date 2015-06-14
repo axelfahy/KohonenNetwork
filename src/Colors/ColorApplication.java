@@ -17,7 +17,7 @@ public class ColorApplication {
         final int h = 800;
         final int w = 800;
 
-        ColorScreen screen = new ColorScreen(w, h, 20);
+        ColorScreen screen = new ColorScreen(w, h, 40);
         JFrame f = new JFrame();
         f.setResizable(false);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,5 +25,7 @@ public class ColorApplication {
         f.setTitle("Color classification");
         f.setSize(w, h);
         f.setVisible(true);
+        // Execution of SOM algorithm.
+        screen.getNetwork().SOM();
     }
 }

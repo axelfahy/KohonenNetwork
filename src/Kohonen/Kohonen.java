@@ -1,7 +1,9 @@
 package Kohonen;
 
+import Colors.ColorScreen;
 import Utilities.ParserDat;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +21,7 @@ public class Kohonen {
     private int nbIterations;
 
     // Learning rate
-    private final double learningRate = 1;    // TODO : Quelle valeur ? A partir de 1, erreur
+    private final double learningRate = 1;
 
     // Size of the network.
     private int width;
@@ -31,6 +33,8 @@ public class Kohonen {
     // Input of the Kohonen network. Weights will be compared with them.
     ArrayList<ArrayList<Double>> input;
 
+    // JPanel for update of screen.
+    JPanel screen;
 
     /**
      * Constructor
@@ -39,13 +43,13 @@ public class Kohonen {
      * @param w        Width of the network.
      * @param h        Height of the network.
      */
-    public Kohonen(String filename, int w, int h) {
+    public Kohonen(String filename, int w, int h, JPanel screen) {
         this.width = w;
         this.height = h;
         this.network = new Neuron[w][h];
         this.input = ParserDat.DatStrToArrayList(filename);
-        //this.nbIterations = input.size() * 3;
         this.nbIterations = 2000;
+        this.screen = screen;
     }
 
     /**
@@ -108,13 +112,13 @@ public class Kohonen {
                 if (distanceTmp < distanceMin) {
                     distanceMin = distanceTmp;
                     BMU = this.network[i][j];
-                    //list.add(BMU);
+                    list.add(BMU);
 
                 }
             }
         }
-        //return list.get((int) (Math.random() * list.size()));
-        return BMU;
+        // Pick one BMU randomly if there is more than one.
+        return list.get((int) (Math.random() * list.size()));
     }
 
     /**
@@ -189,19 +193,24 @@ public class Kohonen {
                 vector = this.input.get(randomInput);
             } while (oldVector.equals(vector));
 
-            //vector = this.input.get(t % 100);
-            //System.out.println(vector.toString());
-
             // The old vector is replaced by the new one.
-            //oldVector = new ArrayList<>(vector);
+            oldVector = new ArrayList<>(vector);
 
-            // Calculation of BMU (Best Matching Unit)
+            // Calculation of BMU (Best Matching Unit).
             Neuron BMU = this.getBMU(vector);
 
-            // Update the BMU's neighbors
+            // Update the BMU's neighbors.
             this.updateNeighbors(BMU, vector, t);
-        }
-        System.out.println("done");
 
+            // Update the screen.
+            this.screen.repaint();
+            // Sleep for the animation.
+            try {
+                Thread.sleep(50);
+            }
+            catch (InterruptedException e) {
+                System.out.println("Erreur sleep : " + e);
+            }
+        }
     }
 }
